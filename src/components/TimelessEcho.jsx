@@ -12,10 +12,10 @@ const TimelessEcho = () => {
 
   const TOTAL_PAGES = 66;
 
-  // Generate pages with WebP format
+  // Generate pages using zero-padded JPG filenames present in `public/album`
   const pages = Array.from({ length: TOTAL_PAGES }, (_, i) => ({
     id: i + 1,
-    image: `/album/${i + 1}.webp`,
+    image: `/album/${String(i + 1).padStart(2, '0')}.jpg`,
     alt: `Page ${i + 1}`,
     isSinglePage: i === 0 || i === TOTAL_PAGES - 1
   }));
@@ -271,7 +271,7 @@ const TimelessEcho = () => {
                     loading="eager"
                     decoding="async"
                     onError={(e) => { 
-                      e.target.src = `/album/${currentPage + 1}.jpg`; 
+                      e.target.src = `/album/${String(currentPage + 1).padStart(2, '0')}.jpg`; 
                     }}
                   />
                 </div>
@@ -284,7 +284,7 @@ const TimelessEcho = () => {
                       loading="eager"
                       decoding="async"
                       onError={(e) => { 
-                        e.target.src = `/album/${currentPage + 1}.jpg`; 
+                        e.target.src = `/album/${String(currentPage + 1).padStart(2, '0')}.jpg`; 
                       }}
                     />
                     <div className="page-number left">{currentPage + 1}</div>
@@ -299,7 +299,7 @@ const TimelessEcho = () => {
                       loading="eager"
                       decoding="async"
                       onError={(e) => { 
-                        e.target.src = `/album/${currentPage + 2}.jpg`; 
+                        e.target.src = `/album/${String(currentPage + 2).padStart(2, '0')}.jpg`; 
                       }}
                     />
                     <div className="page-number right">{currentPage + 2}</div>
